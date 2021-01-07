@@ -4,7 +4,12 @@
     "es6": true,
     "browser": true
   },
+  "parser": "babel-eslint",
   "rules": {
-
+    "no-trailing-spaces": "warn",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "no-unused-vars": "warn",
+    "import/extensions": "warn"
   }
 }
