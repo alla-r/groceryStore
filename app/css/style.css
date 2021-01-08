@@ -1,0 +1,47 @@
+:root {
+  --primary-color: #049372;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.navbar {
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
+  padding-top: 0.5625rem;
+}
+
+#control-render {
+  margin-top: 6rem;
+}
+
+.control-shadow {
+  box-shadow: 0 0 20px 0.35rem rgba(0, 0, 0, 0.07);
+}
+
+.dropdown-toggle {
+  box-shadow: 0 0 20px 0.35rem rgba(0, 0, 0, 0.07);
+  font-weight: 500;
+  padding: 0.625rem 1.5rem 0.5rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.badge-notification {
+  position: absolute;
+  font-size: 0.6rem;
+  margin-top: -0.1rem;
+  margin-left: -0.5rem;
+  padding: 0.2em 0.45em;
+}
+
+.card-ubits {
+  font-size: 15px;
+  color: rgb(163, 163, 163);
+}
+
+.card {
+  border: none;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
+}
