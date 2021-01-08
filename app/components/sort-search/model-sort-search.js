@@ -18,7 +18,8 @@ export default class ModelSortSearch {
     return this.records.filter(({ pName }) => pName.toLowerCase().includes(text));
   }
 
-  // filter = (categ) => {
-  //   console.log(this.records.filter(({ category }) => category === categ));
-  // }
+  filter = (categ) => {
+    console.log(categ);
+    console.log(this.records.filter(({ category }) => category === categ));
+  }
 }

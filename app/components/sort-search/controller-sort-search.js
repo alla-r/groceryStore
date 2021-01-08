@@ -10,36 +10,29 @@ export default class ControllerSortSearch {
 
     this.notify = notify;
     this.events = events;
-
-    // this.init();
   }
-
-  // init = () => {
-  //   this.view.render();
-  // }
 
   onLoad = (data) => {
     this.model.records = data.records;
     this.view.categories = data.categories;
-    this.view.render(() => this.view.getCateg());
+    this.view.renderCategList(this.onFilter);
   }
 
   onSort = (e) => {
-    const records = this.model.sort(e.target.dataset.type);
+    const sortedData = this.model.sort(e.target.dataset.type);
 
-    this.notify(this.events.AFTER_SORT, records);
+    this.notify(this.events.AFTER_SORT, sortedData);
   }
 
   onSearch = (e) => {
-    const records = this.model.search(e.target.value);
-    this.notify(this.events.AFTER_SEARCH, records);
+    const filteredData = this.model.search(e.target.value);
+    this.notify(this.events.AFTER_SEARCH, filteredData);
   }
 
   onFilter = (e) => {
-    // console.log(e);
-    const records = this.model.filter(e.target.dataset.type);
+    console.log(e.target.type);
+    const filteredData = this.model.filter(e.target.value);
 
-    // this.view.render(records);
-    this.notify(this.events.AFTER_FILTER, records);
+    this.notify(this.events.AFTER_FILTER, filteredData);
   }
 }
