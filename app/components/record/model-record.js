@@ -1,13 +1,21 @@
 export default class ModelRecord {
   link = 'https://spreadsheets.google.com/feeds/cells/1PXorfz2O2NqH-FcW0nA-HhmtZMmSSwgHheifWc0e1tU/1/public/full?alt=json';
 
-  names = ['id', 'productName', 'manufacture', 'category', 'ingridients', 'amount', 'units', 'price', 'image'];
+  records = [];
 
-  loadRecords = () => {
-    return fetch(this.link)
-      .then((res) => res.json())
-      .then((data) => this.parseData(data.feed.entry));
-  }
+  categories = [];
+
+  names = ['id', 'pName', 'manufacture', 'category', 'ingridients', 'amount', 'units', 'price', 'image'];
+
+  loadRecords = () => fetch(this.link)
+    .then((res) => res.json())
+    .then((data) => {
+      this.records = this.parseData(data.feed.entry);
+      return {
+        records: this.records,
+        categories: this.categories,
+      };
+    });
 
   parseData = (arr) => {
     const shift = this.names.length;
@@ -20,12 +28,17 @@ export default class ModelRecord {
         return acc;
       }
 
+      if (name === 'category' && !this.categories.includes(content.$t)) {
+        this.categories.push(content.$t);
+      }
+
       if (!acc[index]) {
         acc[index] = {};
       }
 
       acc[index][name] = this.parseContent(name, content.$t);
 
+      // console.log(this.categories);
       return acc;
     }, []);
   }
@@ -52,4 +65,25 @@ export default class ModelRecord {
 
     return newVal;
   }
+
+  sort = (type) => {
+    const sortMethods = {
+      cheapFirst: (a, b) => a.price - b.price,
+      expFirst: (a, b) => b.price - a.price,
+    };
+
+    this.records.sort(sortMethods[type]);
+
+    return this.records;
+  }
+
+  search = (t) => {
+    const text = t.toLowerCase().trim();
+
+    return this.records.filter(({ pName }) => pName.toLowerCase().includes(text));
+  }
+
+  // filter = (categ) => {
+  //   console.log(this.records.filter(({ category }) => category === categ));
+  // }
 }

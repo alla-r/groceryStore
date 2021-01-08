@@ -1,25 +1,42 @@
 export default class ViewRecord {
+  htmlCategories = document.getElementById('categories-list');
+
   htmlCards = document.getElementById('product-list');
 
-  render = (arr) => {
-    const cards = arr.map(this.renderCard).join('');
+  htmlSort = document.getElementById('sort-price');
 
-    this.htmlCards.innerHTML = `<div class="row">${cards}</div>`;
+  htmlSearch = document.querySelector('.inp-search');
+
+  constructor(cbSort, cbSearch, cbFilter) {
+    this.htmlSort.addEventListener('click', cbSort);
+    this.htmlSearch.addEventListener('input', cbSearch);
+    this.htmlCategories.addEventListener('click', cbFilter);
   }
 
-  renderCard = (card) => {
-    return `
+  render = (arrRec, arrCateg) => {
+    const cards = arrRec.map(this.renderCard).join('');
+    const categories = arrCateg.map(this.renderCategories).join('');
+
+    this.htmlCards.innerHTML = `<div class="row">${cards}</div>`;
+    this.htmlCategories.innerHTML = `${categories}`;
+  }
+
+  renderCategories = (category) => `
+    <li><a class="dropdown-item" href="#" data-type=${category}>${category}</a></li>
+  `;
+
+  renderCard = (card) => `
     <div class="col-lg-4 col-md-12 mb-4">
       <div class="card h-100">
         <div class="bg-image hover-overlay h-100">
           <img
             src="${card.image}"
             class="img-fluid"
-            alt="${card.productName} photo"
+            alt="${card.pName} photo"
           />
         </div>
         <div class="card-body">
-          <h5 class="card-title">${card.productName}</h5>
+          <h5 class="card-title">${card.pName}</h5>
           <p class="mb-1 card-ubits">${card.units[0]} ${card.units[1]}</p>
           <h6 class="price">$${card.price}</h6>
           <div>
@@ -30,5 +47,4 @@ export default class ViewRecord {
       </div>
     </div>
     `;
-  }
 }
