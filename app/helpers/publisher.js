@@ -1,3 +1,5 @@
+import events from './events.js';
+
 export default class Publisher {
   listeners = {};
 
@@ -6,7 +8,8 @@ export default class Publisher {
   }
 
   unsubscribe = (eventType, listener) => {
-    // do
+    const listeners = this.getListeners(eventType);
+    this.listeners[eventType] = listeners.filter((func) => func !== listener);
   }
 
   notify = (eventType, data) => {
@@ -19,5 +22,15 @@ export default class Publisher {
     }
 
     return this.listeners[eventType];
+  }
+
+  // controllers cannot change publisher
+  get methods() {
+    return {
+      notify: this.notify,
+      unsubscribe: this.unsubscribe,
+      subscribe: this.subscribe,
+      events,
+    };
   }
 }
