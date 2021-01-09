@@ -4,7 +4,7 @@ import ViewRecord from './view-record.js';
 export default class ControllerRecord {
   constructor({ notify, subscribe, events }) {
     this.model = new ModelRecord();
-    this.view = new ViewRecord();
+    this.view = new ViewRecord(this.onDetails);
 
     this.init();
 
@@ -26,5 +26,11 @@ export default class ControllerRecord {
 
   onSortSearch = (data) => {
     this.view.render(data);
+  }
+
+  onDetails = (e) => {
+    const record = this.model.getRecordById(e.target.dataset.detailsId);
+    // console.log(record);
+    this.notify(this.events.SHOW_DETAILS, record);
   }
 }

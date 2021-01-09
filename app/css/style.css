@@ -54,3 +54,16 @@ body {
 .li-check {
   padding: 4px 5px;
 }
+
+.name-modal {
+  font-weight: bold;
+}
+
+/* .modal-units {
+  color: rgb(107, 107, 107);
+  margin-left: 2rem;
+}
+
+.modal-price {
+  margin-right: 2rem;
+} */
