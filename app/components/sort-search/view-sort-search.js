@@ -58,14 +58,11 @@ export default class ViewSortSearch {
     this.htmlCategories.addEventListener('click', cbFilter);
   }
 
-  renderCategories = (category) => {
-  // ` <li><a class="dropdown-item" href="#" data-type=${category}>${category}</a></li>`;
-    return `
-      <li class="li-check">
-        <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
-        <label class="form-check-label" for="${category}">
-          ${category}
-        </label>
-      </li>`;
-  }
+  renderCategories = (category) => `
+    <li class="li-check">
+      <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
+      <label class="form-check-label" for="${category}">
+        ${category}
+      </label>
+    </li>`;
 }

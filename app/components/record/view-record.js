@@ -1,10 +1,16 @@
 export default class ViewRecord {
   htmlCards = document.getElementById('product-list');
 
+  constructor(onDetails) {
+    this.onDetails = onDetails;
+  }
+
   render = (arrRec) => {
     const cards = arrRec.map(this.renderCard).join('');
 
     this.htmlCards.innerHTML = `<div class="row">${cards}</div>`;
+
+    [...this.htmlCards.querySelectorAll('.card .btn-details')].forEach((btn) => btn.addEventListener('click', this.onDetails));
   }
 
   renderCard = (card) => `
@@ -23,7 +29,7 @@ export default class ViewRecord {
           <p class="mb-1 card-ubits">${card.units[0]} ${card.units[1]}</p>
           <h6 class="price">$${card.price}</h6>
           <div>
-            <a href="#!" class="btn btn-details btn-outline-success">Details</a>
+            <button type="button" class="btn btn-details btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalDetails" data-details-id="${card.id}">Details</button>
             <a href="#!" class="btn btn-add-to-cart btn-success">Add to cart</a>
           </div>        
         </div>

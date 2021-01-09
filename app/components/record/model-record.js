@@ -65,4 +65,6 @@ export default class ModelRecord {
 
     return newVal;
   }
+
+  getRecordById = (id) => this.records.find((el) => el.id === +id);
 }
