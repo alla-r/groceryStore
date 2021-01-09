@@ -11,6 +11,7 @@ export default class ViewRecord {
     this.htmlCards.innerHTML = `<div class="row">${cards}</div>`;
 
     [...this.htmlCards.querySelectorAll('.card .btn-details')].forEach((btn) => btn.addEventListener('click', this.onDetails));
+    // document.querySelector
   }
 
   renderCard = (card) => `

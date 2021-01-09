@@ -29,7 +29,7 @@ export default class ViewDetails {
   }) => {
     this.htmlDetailsContent.innerHTML = `
     <div class="h-auto">
-      <img alt="product photo" class="modal-img" src="${image}">
+      <img alt="product photo" class="modal-img img-fluid" src="${image}">
     </div>
     <p class="modal-info"><span class="name-modal">Product ID:</span> ${id}</p>
     <p class="modal-info"><span class="name-modal">Product Name:</span> ${pName}</p>

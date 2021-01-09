@@ -1,6 +1,6 @@
-:root {
+/* :root {
   --primary-color: #049372;
-}
+} */
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -59,11 +59,18 @@ body {
   font-weight: bold;
 }
 
-/* .modal-units {
-  color: rgb(107, 107, 107);
-  margin-left: 2rem;
+.form-check-input:checked {
+  background-color: #198754;
+  border-color: #198754;
+  /* outline: none; */
 }
 
-.modal-price {
-  margin-right: 2rem;
-} */
+.btn-outline-success:focus {
+  box-shadow: none;
+}
+
+input[type='search']:focus,
+.dropdown-toggle:focus {
+  /* box-shadow: none; */
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+}
