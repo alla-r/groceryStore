@@ -4,7 +4,7 @@ const events = {
   AFTER_SEARCH: 'Products after search',
   AFTER_FILTER: 'Products after filter categories',
   SHOW_DETAILS: 'Show details window of product',
-  SHOW_CART: 'Show cart window',
+  ADD_TO_CART: 'Add product to cart',
 };
 
 export default events;
