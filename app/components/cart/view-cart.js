@@ -1,36 +1,7 @@
 export default class ViewCart {
-  htmlModals = document.querySelector('.modals');
+  modalContainer = document.querySelector('#modalCart .modal-content');
 
   constructor(cbRender) {
-    this.htmlModals.insertAdjacentHTML('beforeend', `
-    <div class="modal fade" id="modalCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-cart-container">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="cart-content">
-              <p class="cart-empty">Cart is empty</p>
-              
-            </div>
-            <div class="cart-footer">
-                <h3>Your Total: $ <span class="cart-total">10</span> </h3>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalMakeOrder">Buy now</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    `);
-
-    this.cartContent = document.querySelector('.cart-content');
-    this.cartEmpty = document.querySelector('.cart-empty');
-    this.total = document.querySelector('.cart-total');
     this.cartBtn = document.querySelector('.cart-btn');
     this.badge = document.querySelector('.badge-notification');
 
@@ -40,6 +11,28 @@ export default class ViewCart {
   render = ({
     data, cbUp, cbDown, cbRemove, total,
   }) => {
+    this.modalContainer.innerHTML = `
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="cart-content">
+          <p class="cart-empty">Cart is empty</p>
+        </div>
+        <div class="cart-footer">
+            <h3>Your Total: $ <span class="cart-total">0</span> </h3>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue shopping</button>
+        <button type="button" class="btn btn-success btn-make-order">Make an order</button>
+      </div>
+      `;
+
+    this.cartContent = document.querySelector('.cart-content');
+    this.total = document.querySelector('.cart-total');
+
     if (data.length > 0) {
       const cartCont = data.map(this.renderCartItem).join('');
       this.cartContent.innerHTML = cartCont;
@@ -48,6 +41,10 @@ export default class ViewCart {
       [...this.cartContent.querySelectorAll('.fa-chevron-up')].forEach((btn) => btn.addEventListener('click', cbUp));
       [...this.cartContent.querySelectorAll('.fa-chevron-down')].forEach((btn) => btn.addEventListener('click', cbDown));
       [...this.cartContent.querySelectorAll('.remove-item')].forEach((btn) => btn.addEventListener('click', cbRemove));
+    } else {
+      this.cartContent.innerHTML = '<p class="cart-empty">Cart is empty</p>';
+      this.total.innerHTML = '0';
+      this.modalContainer.querySelector('.btn-make-order').classList.add('d-none');
     }
   }
 

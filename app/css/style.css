@@ -66,8 +66,26 @@ body {
 
 input[type='search']:focus,
 .dropdown-toggle:focus,
-.btn-close:focus {
+.btn-close:focus,
+.form-control:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+}
+
+input.error {
+  border: 2px solid #e74c3c;
+}
+
+input.success {
+  border: 2px solid #198754;
+}
+
+.error-mes {
+  color: #e74c3c;
+  visibility: hidden;
+}
+
+.error-mes.active {
+  visibility: visible;
 }
 
 .cart-btn {

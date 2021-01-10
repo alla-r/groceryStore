@@ -8,6 +8,7 @@ export default class ControllerCart {
 
     subscribe(events.LOADED_DATA, this.onLoad);
     subscribe(events.ADD_TO_CART, this.addToCart);
+    subscribe(events.CLOSE_MODAL_ORDER, this.onRender);
 
     this.notify = notify;
     this.events = events;
@@ -15,6 +16,10 @@ export default class ControllerCart {
 
   onLoad = (data) => {
     this.model.records = data.records;
+  }
+
+  onBackFromOrder = () => {
+    this.view(this.onRender);
   }
 
   onRender = () => {
@@ -26,6 +31,7 @@ export default class ControllerCart {
       total: this.model.getTotal(),
     };
     this.view.render(infoRender);
+    this.notify(this.events.SHOW_CART, infoRender.data, infoRender.total);
   }
 
   addToCart = (recordId) => {
