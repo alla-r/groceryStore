@@ -3,7 +3,7 @@ import ViewSortSearch from './view-sort-search.js';
 
 export default class ControllerSortSearch {
   constructor({ subscribe, events, notify }) {
-    this.view = new ViewSortSearch(this.onSort, this.onSearch, this.onFilter);
+    this.view = new ViewSortSearch(this.onSort, this.onSearch);
     this.model = new ModelSortSearch();
 
     subscribe(events.LOADED_DATA, this.onLoad);

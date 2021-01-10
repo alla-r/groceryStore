@@ -20,10 +20,10 @@
         <div class="container-fluid px-5">
           <a class="navbar-brand" href="#home">groceryStore</a>
           <ul class="navbar-nav d-flex flex-row">
-            <a class="nav-link cart-container" href="#">
-              <i class="fas fa-shopping-cart"></i>
-              <span class="badge rounded-pill badge-notification bg-danger">1</span>
-            </a>
+            <button type="button" class="nav-link cart-btn" data-bs-toggle="modal" data-bs-target="#modalCart">
+              <i class="fas fa-shopping-cart cart-icon"></i>
+              <span class="badge rounded-pill badge-notification bg-success">0</span>
+            </button>
           </ul>
         </div>
       </nav>
@@ -39,7 +39,29 @@
       </div>
     </main>
 
-    <div class="modals"></div>
+    <div class="modals">
+
+
+    <!-- Modal Make Order -->
+    <div class="modal fade" id="modalMakeOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </div>
     
     <script src="app/main.js" type="module"></script>
   </body>

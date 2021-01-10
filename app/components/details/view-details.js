@@ -1,7 +1,7 @@
 export default class ViewDetails {
   htmlModals = document.querySelector('.modals');
 
-  constructor() {
+  constructor(cbAddToCart) {
     this.htmlModals.insertAdjacentHTML('beforeend', `
     <div class="modal fade" id="modalDetails" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -14,7 +14,7 @@ export default class ViewDetails {
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-success">Add to cart</button>
+              <button type="button" class="btn btn-success btn-add-to-cart">Add to cart</button>
             </div>
           </div>
         </div>
@@ -22,7 +22,12 @@ export default class ViewDetails {
     `);
 
     this.htmlDetailsContent = document.querySelector('#modalDetails .modal-body');
+    this.htmlAddToCartBtn = document.querySelector('#modalDetails .btn-add-to-cart');
+
+    this.htmlAddToCartBtn.addEventListener('click', cbAddToCart);
   }
+
+  // <button type="button" class="btn btn-add-to-cart btn-success" data-cart-id="${card.id}">Add to cart</button>`
 
   render = ({
     category, id, image, ingridients, manufacture, pName, price, units,
@@ -39,5 +44,7 @@ export default class ViewDetails {
     <p class="modal-info"><span class="name-modal">Unit:</span> ${units[0]} ${units[1]}</p>
     <p class="modal-info"><span class="name-modal">Price:</span> ${price} $</p>
     `;
+
+    this.htmlAddToCartBtn.dataset.cartId = id;
   }
 }

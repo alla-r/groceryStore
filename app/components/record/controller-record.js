@@ -4,7 +4,7 @@ import ViewRecord from './view-record.js';
 export default class ControllerRecord {
   constructor({ notify, subscribe, events }) {
     this.model = new ModelRecord();
-    this.view = new ViewRecord(this.onDetails, this.onCart);
+    this.view = new ViewRecord(this.onDetails, this.addToCart);
 
     this.init();
 
@@ -34,9 +34,10 @@ export default class ControllerRecord {
     this.notify(this.events.SHOW_DETAILS, record);
   }
 
-  onCart = (arr) => {
-    const records = this.model.getRecordsInCart(arr);
+  addToCart = (e) => {
+    // console.log(e.target.dataset.cartId);
+    // const records = this.model.getRecordsInCart(e.target.dataset.detailsId);
     // console.log(records);
-    this.notify(this.events.SHOW_CART, records);
+    this.notify(this.events.ADD_TO_CART, e.target.dataset.cartId);
   }
 }
