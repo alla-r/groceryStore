@@ -27,8 +27,6 @@ export default class ViewDetails {
     this.htmlAddToCartBtn.addEventListener('click', cbAddToCart);
   }
 
-  // <button type="button" class="btn btn-add-to-cart btn-success" data-cart-id="${card.id}">Add to cart</button>`
-
   render = ({
     category, id, image, ingridients, manufacture, pName, price, units,
   }) => {

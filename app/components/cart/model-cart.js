@@ -52,7 +52,6 @@ export default class ModelCart {
 
   clearCart = () => {
     this.recordsInCart = [];
-
     this.recordsId = {};
   }
 }

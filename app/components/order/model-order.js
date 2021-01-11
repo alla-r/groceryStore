@@ -55,15 +55,13 @@ export default class ModelOrder {
       totalAmount: this.total,
     };
 
-    orderInfo.prodInfo = this.productInCart.map((product) => {
-      return {
-        pName: product.pName,
-        amount: product.amountInCart,
-        pId: product.id,
-        price: product.price,
-        image: product.image,
-      };
-    });
+    orderInfo.prodInfo = this.productInCart.map((product) => ({
+      pName: product.pName,
+      amount: product.amountInCart,
+      pId: product.id,
+      price: product.price,
+      image: product.image,
+    }));
 
     return orderInfo;
   }

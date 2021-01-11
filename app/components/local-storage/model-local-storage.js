@@ -3,6 +3,10 @@ export default class ModelLocalStorage {
 
   historyOfOrders = [];
 
+  token = '';
+
+  chatId = '';
+
   getProdInCart = () => {
     if (!localStorage.getItem('productInCart')) {
       localStorage.setItem('productInCart', JSON.stringify(this.recordsInCart));
@@ -21,6 +25,26 @@ export default class ModelLocalStorage {
     }
 
     return this.historyOfOrders;
+  }
+
+  getBotChatId = () => {
+    if (!localStorage.getItem('chat_id')) {
+      localStorage.setItem('chat_id', this.chatId);
+    } else {
+      this.chatId = localStorage.getItem('chat_id');
+    }
+
+    return this.chatId;
+  }
+
+  getBotToken = () => {
+    if (!localStorage.getItem('bot')) {
+      localStorage.setItem('bot', this.token);
+    } else {
+      this.token = localStorage.getItem('bot');
+    }
+
+    return this.token;
   }
 
   setNewOrder = (newOrder) => {

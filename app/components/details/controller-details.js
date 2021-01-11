@@ -14,8 +14,6 @@ export default class ControllerDetails {
   }
 
   addToCart = (e) => {
-    // console.log(e.target);
-    // console.log(e.target.dataset.cartId);
     this.notify(this.events.ADD_TO_CART, e.target.dataset.cartId);
   }
 }
