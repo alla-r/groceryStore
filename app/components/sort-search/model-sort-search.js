@@ -19,7 +19,7 @@ export default class ModelSortSearch {
   }
 
   filter = (categ) => {
-    console.log(categ);
+    // console.log(categ);
     return this.records.filter(({ category }) => category === categ);
   }
 }

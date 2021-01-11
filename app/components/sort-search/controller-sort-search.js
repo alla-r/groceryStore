@@ -30,7 +30,7 @@ export default class ControllerSortSearch {
   }
 
   onFilter = (e) => {
-    console.log(e.target.type);
+    // console.log(e.target.type);
     const filteredData = this.model.filter(e.target.value);
 
     this.notify(this.events.AFTER_FILTER, filteredData);

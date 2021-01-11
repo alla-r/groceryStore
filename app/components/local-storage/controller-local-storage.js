@@ -1,9 +1,7 @@
 import ModelLocalStorage from './model-local-storage.js';
-import ViewLocalStorage from './view-local-storage.js';
 
 export default class ControllerLocalStorage {
   constructor({ notify, events, subscribe }) {
-    this.view = new ViewLocalStorage();
     this.model = new ModelLocalStorage();
 
     subscribe(events.LOADED_DATA, this.onLoad);
@@ -24,6 +22,8 @@ export default class ControllerLocalStorage {
     this.notify(this.events.GET_DATA_FROM_LS, {
       prodInCart: [...prodInCart],
       allOrders: [...allOrders],
+      tokenId: this.model.getBotToken(),
+      chatId: this.model.getBotChatId(),
     });
   }
 
@@ -31,6 +31,10 @@ export default class ControllerLocalStorage {
     this.model.clearCart();
     this.model.setNewOrder(newOrder);
   }
+
+  // onBot = () => {
+
+  // }
 
   onChange = (newProdInCart) => {
     this.model.newProdInCart(newProdInCart);

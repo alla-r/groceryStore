@@ -29,7 +29,7 @@ export default class ViewOrderHistory {
   }
 
   render = (data) => {
-    const items = data.sort((a, b) => a.date - b.date)
+    const items = data.sort((a, b) => b.date - a.date)
       .map((order) => this.renderItem(order))
       .join('');
 
@@ -56,7 +56,7 @@ export default class ViewOrderHistory {
       <div class="list-group-item my-4">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1 fw-bold text-success mb-3">Order id ${order.id}</h5>
-          <small>${new Date(order.date).toLocaleDateString()}</small>
+          <small>${new Date(order.date).toLocaleDateString()} ${this.makeTwoDigit(new Date(order.date).getHours())}:${this.makeTwoDigit(new Date(order.date).getMinutes())}</small>
         </div>
         <p class="mb-1 fw-bold d-inline">Buyer: <p class="d-inline"> ${order.userInfo.name} (phone number: ${order.userInfo.phone})<p></p>
         <p class="mb-1 fw-bold d-inline">Total cost: <p class="d-inline"> ${order.totalAmount}<p></p>
@@ -72,4 +72,12 @@ export default class ViewOrderHistory {
       <td>${prod.amount}</td>
     </tr>
   `;
+
+  makeTwoDigit = (el) => {
+    if (el < 10) {
+      el = `0${el}`;
+    }
+
+    return el;
+  }
 }
