@@ -5,14 +5,23 @@ export default class ModelCart {
 
   recordsId = {};
 
-  addToCart = (id) => {
+  addToCart = (id, amount = 1) => {
     if (!this.recordsId[id]) {
-      this.recordsId[id] = 1;
+      this.recordsId[id] = amount;
     } else {
-      this.recordsId[id] += 1;
+      this.recordsId[id] += amount;
     }
 
     return Object.keys(this.recordsId).length;
+  }
+
+  addToRecId = () => {
+    this.recordsInCart.forEach((el) => {
+      this.addToCart(el.id, el.amountInCart);
+    });
+
+    return Object.keys(this.recordsId).length;
+    // console.log(this.recordsInCart);
   }
 
   getRecords = () => {
@@ -39,5 +48,11 @@ export default class ModelCart {
   removeItem = (id) => {
     delete this.recordsId[id];
     return Object.keys(this.recordsId).length;
+  }
+
+  clearCart = () => {
+    this.recordsInCart = [];
+
+    this.recordsId = {};
   }
 }

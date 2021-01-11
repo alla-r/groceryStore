@@ -100,18 +100,13 @@ export default class ViewOrder {
     }
   }
 
-  renderSuccess = (orderId) => {
+  renderSuccess = (orderInfo) => {
     this.modalContainer.innerHTML = `
-      <div class="modal-header">
-        <button type="button" class="btn-close"></button>
-      </div>
       <div class="modal-body">
         <div class="cart-content text-center">
-        
-        <p>Thank you for your order! </p>
-        <p>Order ID = <span class="text-success">${orderId}</span></p>
-        <p>We'll send info about your order in Telegram.</p>
-        
+          <p>Thank you for your order! </p>
+          <p>Order ID = <span class="text-success">${orderInfo.id}</span></p>
+          <p>We'll send you info about your order in Telegram.</p>
         </div>
       </div>
     `;

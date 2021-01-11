@@ -9,17 +9,22 @@ export default class ControllerCart {
     subscribe(events.LOADED_DATA, this.onLoad);
     subscribe(events.ADD_TO_CART, this.addToCart);
     subscribe(events.CLOSE_MODAL_ORDER, this.onRender);
+    subscribe(events.GET_DATA_FROM_LS, this.onLS);
+    subscribe(events.NEW_ORDER, this.clearCart);
 
     this.notify = notify;
     this.events = events;
   }
 
-  onLoad = (data) => {
-    this.model.records = data.records;
+  onLS = ({ prodInCart }) => {
+    this.model.recordsInCart = prodInCart;
+    const num = this.model.addToRecId();
+
+    this.view.changeBadge(num);
   }
 
-  onBackFromOrder = () => {
-    this.view(this.onRender);
+  onLoad = (data) => {
+    this.model.records = data.records;
   }
 
   onRender = () => {
@@ -31,23 +36,30 @@ export default class ControllerCart {
       total: this.model.getTotal(),
     };
     this.view.render(infoRender);
-    this.notify(this.events.SHOW_CART, infoRender.data, infoRender.total);
+
+    this.notify(this.events.SHOW_CART, {
+      data: infoRender.data,
+      total: infoRender.total,
+    });
   }
 
   addToCart = (recordId) => {
     const num = this.model.addToCart(recordId);
 
     this.view.changeBadge(num);
+    this.notify(this.events.CHANGE_IN_CART, this.model.getRecords());
   }
 
   onUp = (e) => {
     this.model.amountUp(e.target.dataset.cartId);
+    this.notify(this.events.CHANGE_IN_CART, this.model.getRecords());
 
     this.onRender();
   }
 
   onDown = (e) => {
     this.model.amountDown(e.target.dataset.cartId);
+    this.notify(this.events.CHANGE_IN_CART, this.model.getRecords());
 
     this.onRender();
   }
@@ -55,7 +67,13 @@ export default class ControllerCart {
   onRemove = (e) => {
     const num = this.model.removeItem(e.target.dataset.cartId);
     this.view.changeBadge(num);
+    this.notify(this.events.CHANGE_IN_CART, this.model.getRecords());
 
     this.onRender();
+  }
+
+  clearCart = () => {
+    this.model.clearCart();
+    this.view.changeBadge(0);
   }
 }

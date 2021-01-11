@@ -3,6 +3,8 @@ export default class ModelOrder {
 
   total = 0;
 
+  currentOrder = {}
+
   validate = ({ name, phone, email }) => {
     // console.log(name, phone, email);
     const result = {};
@@ -16,7 +18,7 @@ export default class ModelOrder {
     result.name = this.checkData(name, 'Name');
 
     if (!(Object.values(result).find((el) => typeof el !== 'boolean'))) {
-      return this.getOrderId();
+      return this.getOrder(name, phone, email);
     }
 
     return result;
@@ -39,4 +41,30 @@ export default class ModelOrder {
   }
 
   getOrderId = () => Number(`${Date.now().toString().slice(3)}${Math.random().toString().slice(2, 5)}`).toString(16);
+
+  getOrder = (name, phone, email) => {
+    const orderInfo = {
+      id: this.getOrderId(),
+      date: Date.now(),
+      userInfo: {
+        name,
+        phone,
+        email,
+      },
+      prodInfo: [],
+      totalAmount: this.total,
+    };
+
+    orderInfo.prodInfo = this.productInCart.map((product) => {
+      return {
+        pName: product.pName,
+        amount: product.amountInCart,
+        pId: product.id,
+        price: product.price,
+        image: product.image,
+      };
+    });
+
+    return orderInfo;
+  }
 }

@@ -11,8 +11,10 @@ export default class ControllerOrder {
     this.events = events;
   }
 
-  onShowCart = (data, total) => {
+  onShowCart = ({ data, total }) => {
     this.view = new ViewOrder(this.onShowOrder);
+
+    // console.log(data, total);
 
     this.model.productInCart = data;
     this.model.total = total;
@@ -23,17 +25,19 @@ export default class ControllerOrder {
   }
 
   onCloseOrder = () => {
-    const userData = 1;
-    this.notify(this.events.CLOSE_MODAL_ORDER, userData);
+    // const userData = 1;
+    this.notify(this.events.CLOSE_MODAL_ORDER, {});
   }
 
   onSubmit = () => {
     const userData = this.view.getUserData();
     if (userData) {
       const result = this.model.validate(userData);
-      // console.log(typeof result);
-      if (typeof result === 'string') {
+
+      if (result.id) {
         this.view.renderSuccess(result);
+
+        this.notify(this.events.NEW_ORDER, result);
       } else {
         this.view.onError(result);
       }
