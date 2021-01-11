@@ -7,6 +7,7 @@ import ControllerOrder from './components/order/controller-order.js';
 import ControllerOrderHistory from './components/order-history/controller-order-history.js';
 import ControllerLocalStorage from './components/local-storage/controller-local-storage.js';
 import ControllerBot from './components/bot/controller-bot.js';
+import ControllerPagination from './components/pagination/controller-pagination.js';
 
 const publisher = new Publisher();
 const record = new ControllerRecord(publisher.methods);
@@ -18,3 +19,4 @@ const cart = new ControllerCart(publisher.methods);
 const order = new ControllerOrder(publisher.methods);
 const orderHistory = new ControllerOrderHistory(publisher.methods);
 const localStorage = new ControllerLocalStorage(publisher.methods);
+const pagination = new ControllerPagination(publisher.methods);

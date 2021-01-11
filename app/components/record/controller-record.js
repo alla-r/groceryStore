@@ -11,9 +11,10 @@ export default class ControllerRecord {
     this.events = events;
     this.notify = notify;
 
-    subscribe(events.AFTER_SEARCH, this.onSortSearch);
-    subscribe(events.AFTER_SORT, this.onSortSearch);
+    // subscribe(events.AFTER_SEARCH, this.onSortSearch);
+    // subscribe(events.AFTER_SORT, this.onSortSearch);
     subscribe(events.AFTER_FILTER, this.onSortSearch);
+    subscribe(events.ON_PAGINATION, this.onSortSearch);
   }
 
   init = () => {
