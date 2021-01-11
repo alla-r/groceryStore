@@ -14,6 +14,7 @@
     "no-param-reassign":"warn",
     "max-len":"warn",
     "consistent-return": "warn",
-    "no-useless-escape":"warn"
+    "no-useless-escape":"warn",
+    "no-unused-expressions": "warn"
   }
 }

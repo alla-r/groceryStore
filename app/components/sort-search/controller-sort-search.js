@@ -24,16 +24,16 @@ export default class ControllerSortSearch {
   onSort = (e) => {
     const sortedData = this.model.sort(e.target.dataset.type);
 
-    this.notify(this.events.AFTER_SORT, sortedData);
+    this.notify(this.events.AFTER_FILTER, sortedData);
   }
 
   onSearch = (e) => {
     const filteredData = this.model.search(e.target.value);
-    this.notify(this.events.AFTER_SEARCH, filteredData);
+    this.notify(this.events.AFTER_FILTER, filteredData);
   }
 
   onFilter = (e) => {
-    console.log(e.target.dataset.type);
+    // console.log(e.target.dataset.type);
     const filteredData = this.model.filter(e.target.dataset.type);
 
     this.notify(this.events.AFTER_FILTER, filteredData);

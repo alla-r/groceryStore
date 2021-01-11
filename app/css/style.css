@@ -67,8 +67,10 @@ body {
 input[type='search']:focus,
 .dropdown-toggle:focus,
 .btn-close:focus,
-.form-control:focus {
+.form-control:focus,
+.page-link:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
+  color: #198754;
 }
 
 input.error {
@@ -157,4 +159,19 @@ input.success {
   margin-top: 2rem;
   letter-spacing: 0.1rem;
   text-align: center;
+}
+
+.page-link {
+  position: relative;
+  display: block;
+  color: #198754;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.page-link:hover {
+  color: #198754;
 }
