@@ -12,6 +12,8 @@
     "no-unused-vars": "warn",
     "import/extensions": "off",
     "no-param-reassign":"warn",
-    "max-len":"warn"
+    "max-len":"warn",
+    "consistent-return": "warn",
+    "no-useless-escape":"warn"
   }
 }
