@@ -31,7 +31,10 @@ export default class ModelCart {
   }
 
   amountUp = (id) => {
-    this.recordsId[id] += 1;
+    if (this.recordsId[id] < this.records.find((el) => el.id === +id).amount) {
+      // console.log('yes');
+      this.recordsId[id] += 1;
+    }
   }
 
   amountDown = (id) => {

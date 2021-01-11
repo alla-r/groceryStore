@@ -14,8 +14,11 @@ export default class ControllerSortSearch {
 
   onLoad = (data) => {
     this.model.records = data.records;
-    this.view.categories = data.categories;
-    this.view.renderCategList(this.onFilter);
+    this.model.categories = data.categories;
+    data.categories.forEach((el) => {
+      this.model.activeCateg[el] = false;
+    });
+    this.view.renderCategList(this.model.categories, this.onFilter);
   }
 
   onSort = (e) => {
@@ -30,8 +33,8 @@ export default class ControllerSortSearch {
   }
 
   onFilter = (e) => {
-    // console.log(e.target.type);
-    const filteredData = this.model.filter(e.target.value);
+    console.log(e.target.dataset.type);
+    const filteredData = this.model.filter(e.target.dataset.type);
 
     this.notify(this.events.AFTER_FILTER, filteredData);
   }

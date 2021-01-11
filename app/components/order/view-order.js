@@ -8,13 +8,13 @@ export default class ViewOrder {
 
   showModal = (cbClose, cbSubmit) => {
     this.modalContainer.innerHTML = `
-    <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Make an order</h5>
+    <div class="modal-header bg-success">
+      <h5 class="modal-title text-white" id="exampleModalLabel">Make an order</h5>
       <button type="button" class="btn-close"></button>
     </div>
     <div class="modal-body">
       <div class="cart-content">
-      <h6 class="mb-3 text-success">To order, please fill in the form below!</h6>
+      <h6 class="mb-3 text-grey">To order, please fill in the form below!</h6>
       <form>
       <div class="mb-3">
           <label for="user-name" class="form-label">Name <span class="text-danger">*</span></label>
@@ -106,7 +106,6 @@ export default class ViewOrder {
         <div class="cart-content text-center">
           <p>Thank you for your order! </p>
           <p>Order ID = <span class="text-success">${orderInfo.id}</span></p>
-          <p>We'll send you info about your order in Telegram.</p>
         </div>
       </div>
     `;

@@ -17,14 +17,13 @@ export default class ModelBot {
     const prodList = prodInfo.map((prod) => this.renderProd(prod)).join('');
 
     const mes = encodeURI(`
-  Hi, ${userInfo.name}\!
-  There is info about your order: \n
-    *Order id : ${id}*
-    *Total cost :* $${totalAmount}
-    *Time of order :* ${new Date(date).toLocaleDateString()} ${this.makeTwoDigit(new Date(date).getHours())}:${this.makeTwoDigit(new Date(date).getMinutes())} \n
-    *Products :* \n ${prodList}
-  
-  Thanks for your order\!`.replace(/\./g, '/'));
+      *Order id : ${id}* \n
+      *Buyer name : * ${userInfo.name}
+      *Buyer phone number : * ${userInfo.phone} \n
+      *Total cost :* $${totalAmount}
+      *Time of order :* ${new Date(date).toLocaleDateString()} ${this.makeTwoDigit(new Date(date).getHours())}:${this.makeTwoDigit(new Date(date).getMinutes())} \n
+      *Products :* \n ${prodList}
+    `.replace(/\./g, '/'));
 
     return mes;
   }

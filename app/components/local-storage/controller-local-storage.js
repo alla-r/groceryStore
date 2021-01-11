@@ -4,7 +4,7 @@ export default class ControllerLocalStorage {
   constructor({ notify, events, subscribe }) {
     this.model = new ModelLocalStorage();
 
-    subscribe(events.LOADED_DATA, this.onLoad);
+    // subscribe(events.LOADED_DATA, this.onLoad);
     subscribe(events.CHANGE_IN_CART, this.onChange);
     subscribe(events.NEW_ORDER, this.onNewOrder);
 
@@ -12,10 +12,10 @@ export default class ControllerLocalStorage {
     this.subscribe = subscribe;
     this.events = events;
 
-    // this.init();
+    this.init();
   }
 
-  onLoad = () => {
+  init = () => {
     const allOrders = this.model.getHistory();
     const prodInCart = this.model.getProdInCart();
 
@@ -32,30 +32,19 @@ export default class ControllerLocalStorage {
     this.model.setNewOrder(newOrder);
   }
 
-  // onBot = () => {
-
-  // }
-
-  onChange = (newProdInCart) => {
-    this.model.newProdInCart(newProdInCart);
-    // console.log(newProdInCart);
-
-    // const allOrders = this.model.getHistory();
-    // const prodInCart = this.model.getProdInCart();
-
-    // this.notify(this.events.GET_DATA_FROM_LS, {
-    //   prodInCart: [...prodInCart],
-    //   allOrders: [...allOrders],
-    // });
+  onChange = (products) => {
+    this.model.newProdInCart(products);
   }
 
-  // init = () => {
+  // onLoad = () => {
   //   const allOrders = this.model.getHistory();
   //   const prodInCart = this.model.getProdInCart();
 
   //   this.notify(this.events.GET_DATA_FROM_LS, {
   //     prodInCart: [...prodInCart],
   //     allOrders: [...allOrders],
+  //     tokenId: this.model.getBotToken(),
+  //     chatId: this.model.getBotChatId(),
   //   });
   // }
 }

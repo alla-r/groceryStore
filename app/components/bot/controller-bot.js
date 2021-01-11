@@ -9,8 +9,6 @@ export default class ControllerBot {
   }
 
   getTokenId = ({ tokenId, chatId }) => {
-    // console.log(tokenId, chatId);
-
     this.model.token = tokenId;
     this.model.chatId = chatId;
   }

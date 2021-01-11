@@ -1,8 +1,6 @@
 export default class ViewSortSearch {
   controlSection = document.getElementById('control-render');
 
-  categories = [];
-
   constructor(cbSort, cbSearch) {
     this.controlSection.insertAdjacentHTML('beforeend', `
     <div class="dropdown mb-3 mb-lg-0">
@@ -50,19 +48,19 @@ export default class ViewSortSearch {
     this.htmlSearch.addEventListener('input', cbSearch);
   }
 
-  renderCategList = (cbFilter) => {
-    const categ = this.categories.map(this.renderCategories).join('');
+  renderCategList = (categories, cbFilter) => {
+    const categ = categories.map(this.renderCategories).join('');
 
     this.htmlCategories.innerHTML = categ;
 
-    this.htmlCategories.addEventListener('click', cbFilter);
+    [...this.htmlCategories.querySelectorAll('.form-check-input')].forEach((btn) => btn.addEventListener('click', cbFilter));
   }
 
   renderCategories = (category) => `
     <li class="li-check">
-      <input class="form-check-input" type="checkbox" value="${category}" id="${category}">
-      <label class="form-check-label" for="${category}">
-        ${category}
+      
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" data-type="${category}"> ${category}
       </label>
     </li>`;
 }

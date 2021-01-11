@@ -1,6 +1,10 @@
 export default class ModelSortSearch {
   records = [];
 
+  categories = [];
+
+  activeCateg = {};
+
   sort = (type) => {
     const sortMethods = {
       cheapFirst: (a, b) => a.price - b.price,
@@ -19,7 +23,13 @@ export default class ModelSortSearch {
   }
 
   filter = (categ) => {
+    // console.log(this.categories);
     // console.log(categ);
-    return this.records.filter(({ category }) => category === categ);
+
+    this.activeCateg[categ] === true ? this.activeCateg[categ] = false : this.activeCateg[categ] = true;
+    // this.categories[1] = this.categories[0].map((el) => true);
+    // console.log(this.activeCateg[categ]);
+    // console.log(this.activeCateg);
+    return this.records.filter(({ category }) => this.activeCateg[category]);
   }
 }
