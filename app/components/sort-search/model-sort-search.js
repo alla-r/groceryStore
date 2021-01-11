@@ -26,7 +26,9 @@ export default class ModelSortSearch {
     // console.log(this.categories);
     // console.log(categ);
 
-    this.activeCateg[categ] === true ? this.activeCateg[categ] = false : this.activeCateg[categ] = true;
+    this.activeCateg[categ] === true
+      ? this.activeCateg[categ] = false
+      : this.activeCateg[categ] = true;
     // this.categories[1] = this.categories[0].map((el) => true);
     // console.log(this.activeCateg[categ]);
     // console.log(this.activeCateg);
