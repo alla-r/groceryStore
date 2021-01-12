@@ -6,7 +6,6 @@ export default class ModelOrder {
   currentOrder = {}
 
   validate = ({ name, phone, email }) => {
-    // console.log(name, phone, email);
     const result = {};
 
     if (email) {
@@ -28,7 +27,7 @@ export default class ModelOrder {
     const typeRegex = {
       Email: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       Phone: /^\+\d{3}-\d{2}-\d{2}-\d{2}-\d{3}$/,
-      Name: /^[A-Za-z ]+$/,
+      Name: /^[a-zA-Z ]{2,30}$/g,
     };
 
     let result = `${type} is not valid`;

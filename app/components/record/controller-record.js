@@ -11,8 +11,6 @@ export default class ControllerRecord {
     this.events = events;
     this.notify = notify;
 
-    // subscribe(events.AFTER_SEARCH, this.onSortSearch);
-    // subscribe(events.AFTER_SORT, this.onSortSearch);
     subscribe(events.AFTER_FILTER, this.onSortSearch);
     subscribe(events.ON_PAGINATION, this.onSortSearch);
   }
@@ -31,14 +29,11 @@ export default class ControllerRecord {
 
   onDetails = (e) => {
     const record = this.model.getRecordById(e.target.dataset.detailsId);
-    // console.log(record);
+
     this.notify(this.events.SHOW_DETAILS, record);
   }
 
   addToCart = (e) => {
-    // console.log(e.target.dataset.cartId);
-    // const records = this.model.getRecordsInCart(e.target.dataset.detailsId);
-    // console.log(records);
     this.notify(this.events.ADD_TO_CART, e.target.dataset.cartId);
   }
 }

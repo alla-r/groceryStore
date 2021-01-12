@@ -55,12 +55,20 @@ export default class ViewOrder {
     const isEmptyPhone = this.checkEmptyFields(this.phone);
 
     if (!isEmptyName && !isEmptyPhone) {
+      this.clearErr();
       return {
         name: this.name.value.trim(),
         phone: this.phone.value.trim(),
         email: this.email.value.trim(),
       };
     }
+  }
+
+  clearErr = () => {
+    this.name.classList.remove('error');
+    this.phone.classList.remove('error');
+    this.name.parentNode.querySelector('.error-mes').classList.remove('active');
+    this.phone.parentNode.querySelector('.error-mes').classList.remove('active');
   }
 
   checkEmptyFields = (input) => {

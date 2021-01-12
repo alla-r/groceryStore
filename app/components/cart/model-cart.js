@@ -21,7 +21,6 @@ export default class ModelCart {
     });
 
     return Object.keys(this.recordsId).length;
-    // console.log(this.recordsInCart);
   }
 
   getRecords = () => {
@@ -32,7 +31,6 @@ export default class ModelCart {
 
   amountUp = (id) => {
     if (this.recordsId[id] < this.records.find((el) => el.id === +id).amount) {
-      // console.log('yes');
       this.recordsId[id] += 1;
     }
   }

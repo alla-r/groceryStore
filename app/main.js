@@ -11,7 +11,6 @@ import ControllerPagination from './components/pagination/controller-pagination.
 
 const publisher = new Publisher();
 const record = new ControllerRecord(publisher.methods);
-// const localStorage = new ControllerLocalStorage(publisher.methods);
 const bot = new ControllerBot(publisher.methods);
 const sortSearch = new ControllerSortSearch(publisher.methods);
 const details = new ControllerDetails(publisher.methods);

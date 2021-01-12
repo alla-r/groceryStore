@@ -67,10 +67,13 @@ body {
 input[type='search']:focus,
 .dropdown-toggle:focus,
 .btn-close:focus,
-.form-control:focus,
-.page-link:focus {
+.form-control:focus {
   box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.5);
   color: #198754;
+}
+
+.page-link:focus {
+  box-shadow: none;
 }
 
 input.error {
@@ -174,4 +177,9 @@ input.success {
 
 .page-link:hover {
   color: #198754;
+}
+
+.activePage .page-link {
+  background-color: #198754;
+  color: #fff;
 }

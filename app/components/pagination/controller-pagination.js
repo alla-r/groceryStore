@@ -13,24 +13,25 @@ export default class ControllerPagination {
   }
 
   onLoad = ({ records }) => {
-    // console.log('load', records);
     this.model.prodList = records;
     this.view = new ViewPagination(this.model.getNumOfPages(), this.onChangePage);
+    this.view.changeActivePage(1);
 
     this.notify(this.events.ON_PAGINATION, this.model.changePage(1));
   }
 
   onFilter = (data) => {
-    // console.log('filter', data);
     this.model.prodList = data;
     this.view = new ViewPagination(this.model.getNumOfPages(), this.onChangePage);
+    this.view.changeActivePage(1);
+
     this.notify(this.events.ON_PAGINATION, this.model.changePage(1));
   }
 
   onChangePage = (e) => {
-    // console.log(e.target.dataset.numPage);
+    this.view.changeActivePage(e.target.dataset.numPage);
     const prodOnPage = this.model.changePage(e.target.dataset.numPage);
-    // console.log(prodOnPage);
+
     this.notify(this.events.ON_PAGINATION, prodOnPage);
   }
 }

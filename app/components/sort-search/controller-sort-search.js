@@ -33,9 +33,12 @@ export default class ControllerSortSearch {
   }
 
   onFilter = (e) => {
-    // console.log(e.target.dataset.type);
     const filteredData = this.model.filter(e.target.dataset.type);
 
-    this.notify(this.events.AFTER_FILTER, filteredData);
+    if (filteredData.length === 0) {
+      this.notify(this.events.AFTER_FILTER, this.model.records);
+    } else {
+      this.notify(this.events.AFTER_FILTER, filteredData);
+    }
   }
 }

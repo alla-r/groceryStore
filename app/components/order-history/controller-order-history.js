@@ -11,7 +11,6 @@ export default class ControllerOrderHistory {
   }
 
   onLoad = ({ allOrders }) => {
-    // console.log(allOrders);
     this.model.allOrders = allOrders;
     if (allOrders.length > 0) {
       this.view.render(allOrders);

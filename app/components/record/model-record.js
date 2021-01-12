@@ -38,7 +38,6 @@ export default class ModelRecord {
 
       acc[index][name] = this.parseContent(name, content.$t);
 
-      // console.log(this.categories);
       return acc;
     }, []);
   }

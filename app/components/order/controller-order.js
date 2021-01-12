@@ -14,8 +14,6 @@ export default class ControllerOrder {
   onShowCart = ({ data, total }) => {
     this.view = new ViewOrder(this.onShowOrder);
 
-    // console.log(data, total);
-
     this.model.productInCart = data;
     this.model.total = total;
   }
@@ -25,7 +23,6 @@ export default class ControllerOrder {
   }
 
   onCloseOrder = () => {
-    // const userData = 1;
     this.notify(this.events.CLOSE_MODAL_ORDER, {});
   }
 

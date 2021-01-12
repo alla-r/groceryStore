@@ -58,7 +58,6 @@ export default class ViewSortSearch {
 
   renderCategories = (category) => `
     <li class="li-check">
-      
       <label class="form-check-label">
         <input class="form-check-input" type="checkbox" data-type="${category}"> ${category}
       </label>
