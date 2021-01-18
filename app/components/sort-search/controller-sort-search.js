@@ -1,8 +1,12 @@
 import ModelSortSearch from './model-sort-search.js';
 import ViewSortSearch from './view-sort-search.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerSortSearch {
-  constructor({ subscribe, events, notify }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.view = new ViewSortSearch(this.onSort, this.onSearch);
     this.model = new ModelSortSearch();
 

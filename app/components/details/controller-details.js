@@ -1,7 +1,11 @@
 import ViewDetails from './view-details.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerDetails {
-  constructor({ subscribe, events, notify }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.view = new ViewDetails(this.addToCart);
 
     subscribe(events.SHOW_DETAILS, this.onDetails);

@@ -1,8 +1,12 @@
 import ModelOrderHistory from './model-order-history.js';
 import ViewOrderHistory from './view-order-history.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerOrderHistory {
-  constructor({ subscribe, events }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, events } = this.publisher.methods;
+
     this.model = new ModelOrderHistory();
     this.view = new ViewOrderHistory();
 

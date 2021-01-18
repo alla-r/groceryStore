@@ -1,18 +1,22 @@
 import ModelRecord from './model-record.js';
 import ViewRecord from './view-record.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerRecord {
-  constructor({ notify, subscribe, events }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.model = new ModelRecord();
     this.view = new ViewRecord(this.onDetails, this.addToCart);
 
     this.init();
 
-    this.events = events;
-    this.notify = notify;
-
     subscribe(events.AFTER_FILTER, this.onSortSearch);
     subscribe(events.ON_PAGINATION, this.onSortSearch);
+
+    this.events = events;
+    this.notify = notify;
   }
 
   init = () => {

@@ -1,8 +1,12 @@
 import ModelCart from './model-cart.js';
 import ViewCart from './view-cart.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerCart {
-  constructor({ subscribe, events, notify }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+    
     this.view = new ViewCart(this.onRender);
     this.model = new ModelCart();
 

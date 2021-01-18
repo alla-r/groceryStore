@@ -1,7 +1,11 @@
 import ModelLocalStorage from './model-local-storage.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerLocalStorage {
-  constructor({ notify, events, subscribe }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.model = new ModelLocalStorage();
 
     subscribe(events.CHANGE_IN_CART, this.onChange);

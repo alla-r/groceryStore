@@ -1,8 +1,12 @@
 import ModelOrder from './model-order.js';
 import ViewOrder from './view-order.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerOrder {
-  constructor({ subscribe, events, notify }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.model = new ModelOrder();
 
     subscribe(events.SHOW_CART, this.onShowCart);

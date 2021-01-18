@@ -9,13 +9,23 @@ import ControllerLocalStorage from './components/local-storage/controller-local-
 import ControllerBot from './components/bot/controller-bot.js';
 import ControllerPagination from './components/pagination/controller-pagination.js';
 
-const publisher = new Publisher();
-const record = new ControllerRecord(publisher.methods);
-const bot = new ControllerBot(publisher.methods);
-const sortSearch = new ControllerSortSearch(publisher.methods);
-const details = new ControllerDetails(publisher.methods);
-const cart = new ControllerCart(publisher.methods);
-const order = new ControllerOrder(publisher.methods);
-const orderHistory = new ControllerOrderHistory(publisher.methods);
-const localStorage = new ControllerLocalStorage(publisher.methods);
-const pagination = new ControllerPagination(publisher.methods);
+const record = new ControllerRecord();
+const bot = new ControllerBot();
+const sortSearch = new ControllerSortSearch();
+const details = new ControllerDetails();
+const cart = new ControllerCart();
+const order = new ControllerOrder();
+const orderHistory = new ControllerOrderHistory();
+const localStorage = new ControllerLocalStorage();
+const pagination = new ControllerPagination();
+
+// const publisher = new Publisher();
+// const record = new ControllerRecord(publisher.methods);
+// const bot = new ControllerBot(publisher.methods);
+// const sortSearch = new ControllerSortSearch(publisher.methods);
+// const details = new ControllerDetails(publisher.methods);
+// const cart = new ControllerCart(publisher.methods);
+// const order = new ControllerOrder(publisher.methods);
+// const orderHistory = new ControllerOrderHistory(publisher.methods);
+// const localStorage = new ControllerLocalStorage(publisher.methods);
+// const pagination = new ControllerPagination(publisher.methods);

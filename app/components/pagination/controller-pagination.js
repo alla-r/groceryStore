@@ -1,8 +1,12 @@
 import ModelPagination from './model-pagination.js';
 import ViewPagination from './view-pagination.js';
+import Publisher from '../../helpers/publisher.js';
 
 export default class ControllerPagination {
-  constructor({ subscribe, events, notify }) {
+  constructor() {
+    this.publisher = new Publisher();
+    const { subscribe, notify, events } = this.publisher.methods;
+
     this.model = new ModelPagination();
 
     subscribe(events.LOADED_DATA, this.onLoad);
